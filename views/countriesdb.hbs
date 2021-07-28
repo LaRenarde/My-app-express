@@ -1,0 +1,17 @@
+<h1>{{stitle}}</h1>
+<h2>{{title}}</h2>
+<form action="/">
+    <select name="Nom de pays" id="">
+       
+        {{#each data}}
+            {{!-- //Utilisation du helper pour faire une selection des données à afficher en fonction de paramètres. --}}
+            
+            {{#compare this.code 'FR' operator= '=='}} 
+                <option value="{{this.code}}" selected>{{this.name}}</option>
+            {{else}}
+                <option value="{{this.code}}">{{this.name}}</option>
+            {{/compare}}
+        {{/each}}
+        
+    </select>
+</form>

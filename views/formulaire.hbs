@@ -1,0 +1,47 @@
+<h1> Express App : {{title}}</h1>
+<form method="POST" action="{{form_action}}" id="formAddUser">
+    <div class="form-group">
+        <label for="name">Nom de la formation</label>
+        <input type="text" name="name" id="name" class="form-control" value="{{data.name}}">
+    </div>
+    <div class="form-group">
+        <label for="duree">Durée de la formation en nombre de jours</label>
+        <input type="number" name="duree" id="duree" class="form-control" value="{{data.duree}}">
+    </div>
+    <div class="form-group form-check">
+        <label for="resume">Description de la formation</label>
+        <input type="text" name="resume" id="resume" class="form-control" value="{{data.resume}}">
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="number" name="prix" id="prix" class="form-control" value="{{data.prix}}">
+    </div>
+
+    <div class="form-group form-check">
+        <label for="resume">Formateur référent</label>
+        {{#each liste}}
+        {{#compare  ../data.formateur this.id operator= '=='}}
+            <option value={{this._id}} selected> {{this.name}} - {{this.code}}</option>
+        {{else}}
+            <option value={{this._id}}> {{this.name}} - {{this.code}}</option>
+        {{/compare}}
+        {{/each}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+
+
+{{!-- Script de validation du formulaire de modification --}}
+<script>
+    var form = document.getElementById('formAddUser');
+    form.addEventListener('submit', function (evt) {
+        var actionPost = "/" + form.action.split('/')[3];
+        if (actionPost == "/modifyFormation") form.action += "/{{data._id}}";
+        form.submit();
+    });
+    var btn_del = document.getElementById('delbtn');
+    btn_del.addEventListener('click', function (evt) {
+        window.location = "/deleteUser/{{data._id}}";
+    });
+</script>

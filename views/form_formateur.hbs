@@ -1,0 +1,40 @@
+<h1> Express App : {{title}}</h1>
+<form method="POST" action="{{form_action}}" id="formAddFormateur">
+    <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" name="name" id="name" class="form-control" value="{{data.name}}">
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="prenom" id="prenom" class="form-control" value="{{data.firstname}}">
+    </div>
+    <div class="form-group form-check">
+        <label for="specialite">Spécialité</label>
+        <input type="text" name="specialite" id="specialite" class="form-control" value="{{data.function}}">
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix à la journée</label>
+        <input type="number" name="prix" id="prix" class="form-control" value="{{data.prix_jour}}">
+    </div>
+    <div class="form-group">
+        <label for="tel">Numéro de téléphone</label>
+        <input type="tel" name="tel" id="tel" class="form-control" value="{{data.mobilePhone}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+
+
+{{!-- Script de validation du formulaire de modification --}}
+<script>
+    var form = document.getElementById('formAddFormateur');
+    form.addEventListener('submit', function (evt) {
+        var actionPost = "/" + form.action.split('/')[3];
+        if (actionPost == "/modifyFormateur") form.action += "/{{data._id}}";
+        form.submit();
+    });
+    var btn_del = document.getElementById('delbtn');
+    btn_del.addEventListener('click', function (evt) {
+        window.location = "/deleteFormateur/{{data._id}}";
+    });
+</script>

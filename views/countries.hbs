@@ -1,0 +1,12 @@
+<h1>Voici la liste des pays</h1>
+<p>Données récupérées à partir d'un fichier json sans passer par la base de données mongo</p>
+<form action="/">
+    <select name="Nom de pays" id="">
+        
+       
+        {{#each data}}
+                <option value="{{this.name}}">{{this.name}}</option>
+        {{/each}}
+        
+    </select>
+</form>

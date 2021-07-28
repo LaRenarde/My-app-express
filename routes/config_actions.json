@@ -1,0 +1,142 @@
+{
+    "GET/": {
+        "controler": "getView",
+        "view": "index",
+        "title": "Bienvenue dans le framework Node/express avec mongoose"
+    },
+    "GET/exos": {
+        "controler": "finder",
+        "modelName": "Exercices",
+        "view": "exos"
+    },
+    "GET/exosJSON": {
+        "controler": "finder",
+        "modelName": "Exercices",
+        "view": "exos",
+        "return_type": "application/json"
+    },
+    "GET/countries": {
+        "controler": "finder",
+        "modelName": "Countries",
+        "view": "countries",
+        "return-type": "application/json"
+    },
+    "GET/countriesdb": {
+        "controler": "finder",
+        "modelName": "Countries",
+        "view": "countriesdb"
+    },
+    "GET/users": {
+        "controler": "finder",
+        "modelName": "Users",
+        "view" : "users"
+    },
+    "GET/formUser": {
+        "controler": "findByIdList",
+        "modelName": "Users",
+        "modelList": "Countries",
+        "form_action": "/modifyUser", 
+        "view": "formUser"
+    },
+    "GET/modifyUser": {
+        "controler": "update",
+        "modelName": "Users",
+        "view": "modifyUser"
+    },
+    "POST/modifyUser": {
+        "controler": "update",
+        "modelName": "Users",
+        "view": "modifyUser"
+    },
+    "GET/users_pop": {
+        "controler": "populate",
+        "modelName": "Users",
+        "view": "users",
+        "pop_ref": "country"
+    },
+    "GET/newUser": {
+        "controler": "finder",
+        "modelName": "Users",
+        "modelList": "Countries",
+        "view" : "formUser",
+        "form_action": "/createUser",
+        "title": "Create a new user",
+        "libelle": "creation"
+    },
+    "POST/createUser": {
+        "controler": "insertOne",
+        "modelName": "Users",
+        "view":"users"
+    },
+    "GET/deleteUser": {
+        "controler": "deleteById",
+        "modelName": "Users",
+        "view" : "users"
+    },
+    "GET/formations": {
+        "controler": "populate",
+        "modelName": "Formations",
+        "view" : "formations",
+        "pop_ref": "formateur"
+    },
+    "GET/formulaire": {
+        "controler": "findByIdList",
+        "modelName": "Formations",
+        "modelList": "Formateurs",
+        "form_action": "/modifyFormation", 
+        "view": "formulaire"
+    },
+    "GET/newFormation": {
+        "controler": "finder",
+        "modelName": "Formations",
+        "modelList": "Formateurs",
+        "view" : "formulaire",
+        "form_action": "/createFormation",
+        "title": "Création d'une nouvelle formation",
+        "libelle": "Création"
+    },
+    "POST/createFormation": {
+        "controler": "insertOne",
+        "modelName": "Formations",
+        "view":"formations"
+    },
+    "POST/modifyFormation": {
+        "controler": "updateById",
+        "modelName": "Formations",
+        "view": "modifyFormation"
+    },
+    "GET/deleteFormation": {
+        "controler": "deleteById",
+        "modelName": "Formations",
+        "view" : "formations"
+    },
+    "GET/formateurs": {
+        "controler": "finder",
+        "modelName": "Formateurs",
+        "view": "formateurs"
+    },
+    "GET/newFormateur": {
+        "controler": "finder",
+        "modelName": "Formations",
+        "view" : "form_formateur",
+        "form_action": "/createFormateur",
+        "title": "Création d'un nouveau formateur",
+        "libelle": "Création"
+    },
+    "POST/createFormateur": {
+        "controler": "insertOne",
+        "modelName": "Formateurs",
+        "view":"formateurs"
+    },
+    "POST/modifyFormateur": {
+        "controler": "updateById",
+        "view": "modifyFormateur"
+    },
+    "GET/form_formateur": {
+        "controler": "findByIdList",
+        "modelName": "Formateurs",
+        "modelList": "Formateurs",
+        "form_action": "/modifyFormateur", 
+        "view": "form_formateur"
+    }
+}

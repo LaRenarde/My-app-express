@@ -1,0 +1,66 @@
+<h1>{{title}}</h1>
+<p>Voici la liste de toutes les formations</p>
+
+<button id="newFormation">Enregistrer une nouvelle formation</button>
+<a href="/formateurs">Formations</a></li>
+    
+<table class="table">
+
+
+  <tbody>
+    {{#compare data null operator= "=="}}
+    <tr>Il n'y a pas de formations disponibles pour le moment</tr>
+    {{else}}
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nom de la formation</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Résumer</th>
+      <th scope="col">Formateurs</th>
+      <th scope="col">Prix</th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+
+    {{#each data}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.duree}}</td>
+      <td>{{this.resume}}</td>
+      <td>{{this.formateur.type}}</td>
+      <td>{{this.prix}}</td>
+      <td>
+          <button  id="{{this.id}}modifbtn" class="button">Modifier cette formation</button>
+          <button  id="{{this.id}}delbtn" class="button">Supprimer cette formation</button>
+      </td>
+
+    </tr>
+
+    {{/each}}
+    {{/compare}}
+  </tbody>
+</table>
+
+
+
+<script>
+        var btn_del = document.getElementById("{{this.id}}delbtn");
+      btn_del.addEventListener('click', function (evt) {
+          window.location = "/deleteFormation/{{data._id}}";
+      });
+
+      var btn_modif = document.getElementById("{{this.id}}modifbtn");
+      btn_modif.addEventListener('click', function (evt) {
+          var actionPost = "/"+ form.action.split('/')[3];
+          if (actionPost == "/modifyFormation") form.action += "/{{data._id}}";
+          form.submit();
+      });
+      
+    var btn_new = document.getElementById('newFormation');
+    btn_new.addEventListener('click', function (evt) {
+       evt.preventDefault();
+        window.location = "/newFormation";
+    });
+</script>
+
